@@ -8,10 +8,24 @@ $(document).ready(function() {
 /*
  * Function that is called when the document is ready.
  */
+
+
+function updateProject(e) {
+   var projectID = $('#project').val();
+   $(projectID).animate({
+      width: $('#width').val()
+   });
+
+   var newText = $('#description').val();
+   $(projectID + " .project-description").text(newText);
+}
 function initializePage() {
 	$("#testjs").click(function(e) {
 		$('.jumbotron h1').text("Javascript is connected");
-                $(this).text("Chan CHAN");
+                $(this).text("Please wait...");
+                $(".jumbotron p").addClass("active");
+                $("#testjs").fadeOut();
+                $("#testjs").fadeIn();
 	});
 
 	// Add any additional listeners here
@@ -42,5 +56,6 @@ function projectClick(e) { 
 
 
 }
+    $("#submitBtn").click(updateProject); 
 }
 
